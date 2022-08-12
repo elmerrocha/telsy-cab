@@ -148,7 +148,7 @@ def nibp(data):  # 0x03
     mean = data[3]
     dia = data[4]
     ###########################################################################
-    return str(status)+'*'+str(sys)+'S'+str(mean)+'S'+str(dia)
+    return str(status)+'*'+str(sys)+'S'+str(dia)+'S'+str(mean)
 
 
 def spo2(data):  # 0x04
