@@ -56,11 +56,11 @@ if (date_file == current_date):
                     # NIBP Parameters
                     elif (data == b'\x03'):
                         print('NIBP Paramter: ', data)
-                        nibp = serial_read(data)
-                        nibp_end = nibp.split('*')[0]
+                        nibp_1 = serial_read(data)
+                        nibp_end = nibp_1.split('*')[0]
                         if nibp_end != '1' or nibp_end != '9' or nibp_end != '10':
                             time_flarg = False
-                        nibp.append(nibp)
+                        nibp.append(nibp_1)
                     # SPO2 Parameters
                     elif data == b'\x04':
                         print('SPO2 Paramter: ', data)
