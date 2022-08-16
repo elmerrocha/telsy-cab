@@ -75,9 +75,11 @@ if (date_file == current_date):
                     time_flarg = False
             serial.close()
         except KeyboardInterrupt:
+            serial_write(3)
             serial.close()
         except OSError as err:
             print(err)
+            serial_write(3)
             serial.close()
 
         data_to_send = {
