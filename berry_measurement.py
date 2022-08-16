@@ -54,7 +54,7 @@ if (date_file == current_date):
                         print('ECG Paramter: ', data)
                         rr.append(serial_read(data))
                     # NIBP Parameters
-                    elif (data == b'\x03') and nibp_flarg:
+                    elif (data == b'\x03'):
                         print('NIBP Paramter: ', data)
                         nibp = serial_read(data)
                         nibp_end = nibp.split('*')[0]
