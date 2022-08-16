@@ -22,7 +22,11 @@ serial = Serial('/dev/ttyACM0', 115200)
 nibp_once = True
 time_flarg = True
 data3 = data2 = data1 = data = 0,0,0,0
-ecg_wave = rr = nibp = spo2 = temp = [],[],[],[],[]
+ecg_wave = []
+rr = []
+nibp = []
+spo2 = []
+temp = []
 index_file = open('current_token.txt','r')
 date_txt = open('current_date.txt', 'r')
 index = int(index_file.read())
@@ -89,6 +93,9 @@ if (date_file == current_date):
             serial_write(3)
             sleep(0.1)
             serial.close()
+        serial.close()
+        sleep(0.1)
+
         print('ECG Wave:',len(ecg_wave),'RR len:',len(rr),'SPO2 len:',len(spo2),'NIBP len:',len(nibp),'TEMP len:',len(temp))
         data_to_send = {
             'RR' : rr[len(rr) - 2],
