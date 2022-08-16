@@ -18,7 +18,7 @@ LOCAL = setlocale(LC_ALL, 'es_CO.UTF-8')
 MEASUREMENT_TIME = 90 # 90 seconds, 1:30 minutes
 URI = server()
 AUTH_TOKEN = tokens()
-serial = Serial('/dev/ttyAMA1', 115200)
+serial = Serial('/dev/ttyACM0', 115200)
 nibp_once = True
 time_flarg = True
 data3 = data2 = data1 = data = 0

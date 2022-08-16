@@ -8,7 +8,7 @@ Ing. Elmer Rocha Jaime
 from serial import Serial
 import berry_decoder
 
-serial = Serial('/dev/ttyAMA1', 115200)
+serial = Serial('/dev/ttyACM0', 115200)
 
 
 def get_length(parameter):

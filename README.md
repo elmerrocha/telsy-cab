@@ -9,6 +9,10 @@ This is what is necessary to run the project:
 - [Raspberry Pi OS with desktop - Debian 10 Buster (May 7th 2021)](https://downloads.raspberrypi.org/raspios_armhf/images/raspios_armhf-2021-05-28/)
 - [Python 3.7.3](https://www.python.org/downloads/release/python-373/)
 
+Python libraries needed:
+- [pytz](https://pypi.org/project/pytz/)
+- [pyserial](https://pypi.org/project/pyserial/)
+
 ## **✒️ Autor**
 * **Elmer Rocha** - *Card firmware* - [elmerrocha](https://github.com/elmerrocha)
 
