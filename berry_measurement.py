@@ -48,30 +48,30 @@ if (date_file == current_date):
                     # ECG Wave
                     if (data == b'\x01') and time_flarg:
                         ecg_ = serial_read(data)
-                        print('ECG Wave: ', ecg_)
+                        # print('ECG Wave: ', ecg_)
                         ecg_wave.append(ecg_)
                     # ECG Parameters (Respiration Rate)
                     elif (data == b'\x02') and time_flarg:
                         ecgw_ = serial_read(data)
-                        print('ECG Paramter: ', ecgw_)
+                        print('ECG Parameter: ', ecgw_)
                         rr.append(ecgw_)
                     # NIBP Parameters
                     elif (data == b'\x03'):
                         nibp_1 = serial_read(data)
-                        print('NIBP Paramter: ', nibp_1)
+                        print('NIBP Parameter: ', nibp_1)
                         nibp_end = nibp_1.split('*')[0]
-                        if nibp_end != '1' or nibp_end != '9' or nibp_end != '10':
+                        if nibp_end == '0':
                             time_flarg = False
                         nibp.append(nibp_1)
                     # SPO2 Parameters
                     elif data == b'\x04':
                         spo2_ = serial_read(data)
-                        print('SPO2 Paramter: ', spo2_)
+                        print('SPO2 Parameter: ', spo2_)
                         spo2.append(spo2_)
                     # Temperature Parameters
                     elif data == b'\x05':
                         temp_ = serial_read(data)
-                        print('TEMP Paramter: ', temp_)
+                        print('TEMP Parameter: ', temp_)
                         temp.append(temp_)
 
                 current_time = datetime.now() - start_time
@@ -89,7 +89,7 @@ if (date_file == current_date):
             serial_write(3)
             sleep(0.1)
             serial.close()
-
+        print('ECG Wave:',len(ecg_wave),'RR len:',len(rr),'SPO2 len:',len(spo2),'NIBP len:',len(nibp),'TEMP len:',len(temp))
         data_to_send = {
             'RR' : rr[len(rr) - 2],
             'SPO2' : spo2[len(spo2) - 2].split('S')[0],
