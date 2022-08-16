@@ -21,8 +21,8 @@ AUTH_TOKEN = tokens()
 serial = Serial('/dev/ttyACM0', 115200)
 nibp_once = True
 time_flarg = True
-data3 = data2 = data1 = data = 0
-ecg_wave = rr = nibp = spo2 = temp = []
+data3 = data2 = data1 = data = 0,0,0,0
+ecg_wave = rr = nibp = spo2 = temp = [],[],[],[],[]
 index_file = open('current_token.txt','r')
 date_txt = open('current_date.txt', 'r')
 index = int(index_file.read())
