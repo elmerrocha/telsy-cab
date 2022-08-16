@@ -101,9 +101,9 @@ if (date_file == current_date):
             'RR' : rr[len(rr) - 2],
             'SPO2' : spo2[len(spo2) - 2].split('S')[0],
             'Pulse' : spo2[len(spo2) -2].split('S')[1],
-            'Systolic' : nibp[len(nibp)].split('*')[1].split('S')[0],
-            'Diastolic' : nibp[len(nibp)].split('*')[1].split('S')[1],
-            'MAP' : nibp[len(nibp)].split('*')[1].split('S')[2],
+            'Systolic' : nibp[len(nibp) - 1].split('*')[1].split('S')[0],
+            'Diastolic' : nibp[len(nibp) - 1].split('*')[1].split('S')[1],
+            'MAP' : nibp[len(nibp) - 1].split('*')[1].split('S')[2],
             'Temperature' : temp[len(temp) - 2],
             'Date' : current_date,
             'ECG' : ','.join(ecg_wave)
