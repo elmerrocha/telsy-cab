@@ -47,39 +47,47 @@ if (date_file == current_date):
                 if (data3 == b'\x55') and (data2 == b'\xaa'):
                     # ECG Wave
                     if (data == b'\x01') and time_flarg:
-                        print('ECG Wave: ', data)
-                        ecg_wave.append(serial_read(data))
+                        ecg_ = serial_read(data)
+                        print('ECG Wave: ', ecg_)
+                        ecg_wave.append(ecg_)
                     # ECG Parameters (Respiration Rate)
                     elif (data == b'\x02') and time_flarg:
-                        print('ECG Paramter: ', data)
-                        rr.append(serial_read(data))
+                        ecgw_ = serial_read(data)
+                        print('ECG Paramter: ', ecgw_)
+                        rr.append(ecgw_)
                     # NIBP Parameters
                     elif (data == b'\x03'):
-                        print('NIBP Paramter: ', data)
                         nibp_1 = serial_read(data)
+                        print('NIBP Paramter: ', nibp_1)
                         nibp_end = nibp_1.split('*')[0]
                         if nibp_end != '1' or nibp_end != '9' or nibp_end != '10':
                             time_flarg = False
                         nibp.append(nibp_1)
                     # SPO2 Parameters
                     elif data == b'\x04':
-                        print('SPO2 Paramter: ', data)
-                        spo2.append(serial_read(data))
+                        spo2_ = serial_read(data)
+                        print('SPO2 Paramter: ', spo2_)
+                        spo2.append(spo2_)
                     # Temperature Parameters
                     elif data == b'\x05':
-                        print('TEMP Paramter: ', data)
-                        temp.append(serial_read(data))
+                        temp_ = serial_read(data)
+                        print('TEMP Paramter: ', temp_)
+                        temp.append(temp_)
 
                 current_time = datetime.now() - start_time
                 if current_time.total_seconds() >= MEASUREMENT_TIME:
                     time_flarg = False
+            serial_write(3)
+            sleep(0.1)
             serial.close()
         except KeyboardInterrupt:
             serial_write(3)
+            sleep(0.1)
             serial.close()
         except OSError as err:
             print(err)
             serial_write(3)
+            sleep(0.1)
             serial.close()
 
         data_to_send = {
