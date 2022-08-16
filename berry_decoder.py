@@ -172,8 +172,8 @@ def spo2(data):  # 0x04
     # Pulse Rate
     # range is 0~250，If SPO2 Status is not 0x00(normal), the value is invalid and always be 255(0xFF)
     ###########################################################################
-    spo2 = data[2]
-    pr = data[3]
+    spo2 = data[1]
+    pr = data[2]
     ###########################################################################
     return str(spo2)+'S'+str(pr)
 
