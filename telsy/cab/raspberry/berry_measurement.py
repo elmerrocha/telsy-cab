@@ -37,7 +37,15 @@ index_file.close()
 date_txt.close()
 
 current_date = datetime.now(timezone('America/Bogota')).strftime('%d/%m/%Y')
-if (date_file == current_date):
+if date_file != current_date:
+    date_txt = open(DATE_PATH, 'w')
+    index_file = open(TOKEN_PATH, 'w')
+    date_txt.write(current_date)
+    index_file.write('0')
+    date_txt.close()
+    index_file.close()
+    sleep(0.2)
+else:
     if index < 20:
         start_time = datetime.now()
         try:
@@ -120,11 +128,3 @@ if (date_file == current_date):
         index_file.close()
     else:
         print('No hay más usuarios')
-else:
-    print('Cambio de fecha, vuelva a intentarlo')
-    date_txt = open(DATE_PATH, 'w')
-    index_file = open(TOKEN_PATH, 'w')
-    date_txt.write(current_date)
-    index_file.write('0')
-    date_txt.close()
-    index_file.close()
