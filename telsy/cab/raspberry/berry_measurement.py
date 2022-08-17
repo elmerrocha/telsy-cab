@@ -13,6 +13,7 @@ from requests import post as http_post
 from serial import Serial
 from user_tokens import tokens, server
 from time import sleep
+from json import dumps
 
 LOCAL = setlocale(LC_ALL, 'es_CO.UTF-8')
 TOKEN_PATH = './cab/raspberry/current_token.txt'
@@ -120,8 +121,8 @@ else:
             'ECG' : ','.join(ecg_wave)
         }
 
-        header = {'Authorization': 'Bearer ' + AUTH_TOKEN[index]}
-        response = http_post(URI, json=data_to_send, headers=header, timeout=5)
+        header = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + AUTH_TOKEN[index]}
+        response = http_post(URI, data=dumps(data_to_send), headers=header, timeout=5)
         print(response)
 
         index_file = open(TOKEN_PATH, 'w')
