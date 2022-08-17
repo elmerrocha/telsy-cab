@@ -46,7 +46,7 @@ if date_file != current_date:
     date_txt.close()
     index_file.close()
     sleep(0.2)
-else:
+if date_file == current_date:
     if index < 20:
         start_time = datetime.now()
         try:
