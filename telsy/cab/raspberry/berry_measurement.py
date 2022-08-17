@@ -108,6 +108,7 @@ else:
 
         print('ECG Wave:',len(ecg_wave),'RR len:',len(rr),'SPO2 len:',len(spo2),'NIBP len:',len(nibp),'TEMP len:',len(temp))
         data_to_send = {
+            'patient': {'id': index+2},
             'RR' : rr[len(rr) - 2],
             'SPO2' : spo2[len(spo2) - 2].split('S')[0],
             'Pulse' : spo2[len(spo2) -2].split('S')[1],
