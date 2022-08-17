@@ -15,6 +15,8 @@ from user_tokens import tokens, server
 from time import sleep
 
 LOCAL = setlocale(LC_ALL, 'es_CO.UTF-8')
+TOKEN_PATH = './cab/raspberry/current_token.txt'
+DATE_PATH = './cab/raspberry/current_date.txt'
 MEASUREMENT_TIME = 90 # 90 seconds, 1:30 minutes
 URI = server()
 AUTH_TOKEN = tokens()
@@ -27,8 +29,8 @@ rr = []
 nibp = []
 spo2 = []
 temp = []
-index_file = open('current_token.txt','r')
-date_txt = open('current_date.txt', 'r')
+index_file = open(TOKEN_PATH, 'r')
+date_txt = open(DATE_PATH, 'r')
 index = int(index_file.read())
 date_file = date_txt.read()
 index_file.close()
@@ -113,15 +115,15 @@ if (date_file == current_date):
         response = http_post(URI, json=data_to_send, headers=header, timeout=5)
         print(response)
 
-        index_file = open('current_token.txt', 'w')
+        index_file = open(TOKEN_PATH, 'w')
         index_file.write(str(index+1))
         index_file.close()
     else:
         print('No hay más usuarios')
 else:
     print('Cambio de fecha, vuelva a intentarlo')
-    date_txt = open('current_date.txt', 'w')
-    index_file = open('current_token.txt', 'w')
+    date_txt = open(DATE_PATH, 'w')
+    index_file = open(TOKEN_PATH, 'w')
     date_txt.write(current_date)
     index_file.write('0')
     date_txt.close()
