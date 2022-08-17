@@ -23,13 +23,13 @@ def monitor(request):
     global last_time, current_time, once_flarg, measure_pipe
     current_time = datetime.now() - last_time
     if (current_time.total_seconds() >= 45) or once_flarg:
+        last_time = datetime.now()
+        if once_flarg:
+            once_flarg = False
         try:
             measure_pipe = Popen(MEASURE, stdout=PIPE)
         except CalledProcessError as err:
             print(err)
             measure_pipe.kill()
-        if once_flarg:
-            once_flarg = False
-        last_time = datetime.now()
     print('Time:',current_time.total_seconds())
     return render(request,'index.html')
