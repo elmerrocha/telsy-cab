@@ -1,0 +1,40 @@
+:root {
+    --telsy-negro: #000000;
+    --telsy-blanco: #ffffff;
+    --telsy-purpura: #64329e;
+    --telsy-azul-hielo: #00ced8;
+    --telsy-azul: #3861e5;
+    --telsy-magenta: #e52996;
+    --telsy-aux-purpura1: #4d2980;
+    --telsy-aux-purpura2: #7944cc;
+    --telsy-aux-azul-hielo1: #00b2b2;
+    --telsy-aux-azul-hielo2: #00f2eb;
+    --telsy-aux-azul1: #3054bf;
+    --telsy-aux-azul2: #427dff;
+    --telsy-aux-magenta1: #bf2685;
+    --telsy-aux-magenta2: #ff30b0;
+}
+
+.telsy-white {
+	/* background-color:var(--telsy-blanco); */
+    background-image: url('/static/images/background.png');
+    border-radius: 10px;
+    box-shadow: 0 0 50px var(--telsy-blanco);
+}
+
+.telsy-background {
+    background: rgb(77,41,128);
+    background: linear-gradient(180deg, var(--telsy-aux-purpura1) 0%, var(--telsy-azul-hielo) 90%, var(--telsy-aux-azul-hielo2) 100%);
+}
+
+.screen {
+    width: 800px;
+    height: 480px;
+    margin: 0 auto;
+    padding: 20px;
+    overflow: hidden;
+}
+
+.high-100 {
+	min-height: 100vh;
+}
