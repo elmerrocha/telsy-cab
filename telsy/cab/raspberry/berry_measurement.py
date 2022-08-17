@@ -39,6 +39,7 @@ date_txt.close()
 
 current_date = datetime.now(timezone('America/Bogota')).strftime('%d/%m/%Y')
 if date_file != current_date:
+    date_file = current_date
     date_txt = open(DATE_PATH, 'w')
     index_file = open(TOKEN_PATH, 'w')
     date_txt.write(current_date)
