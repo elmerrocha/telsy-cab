@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from datetime import datetime
 from subprocess import Popen, CalledProcessError, PIPE
+from time import sleep
 
 # Popen dir
 RASPBERRY_PATH = './cab/raspberry/'
@@ -17,7 +18,7 @@ def index(request):
     ''' Index view '''
     global last_time
     last_time = datetime.now()
-    return render(request,'index.html', {'current_user':read_current_user()})
+    return render(request,'index.html', {'current_user':0})
 
 def monitor(request):
     ''' Monitor view '''
@@ -33,7 +34,9 @@ def monitor(request):
             print(err)
             measure_pipe.kill()
     print('Time:',current_time.total_seconds())
-    return render(request,'index.html', {'current_user':read_current_user()})
+    user = read_current_user()
+    sleep(0.4)
+    return render(request,'index.html', {'current_user':user})
 
 def read_current_user():
     f = open(CURRENT_TOKEN,'r')
