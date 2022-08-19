@@ -5,6 +5,7 @@ from subprocess import Popen, CalledProcessError, PIPE
 # Popen dir
 RASPBERRY_PATH = './cab/raspberry/'
 MEASURE = ['python3', RASPBERRY_PATH+'berry_measurement.py']
+CURRENT_TOKEN = './cab/raspberry/current_token.txt'
 
 current_time = datetime.now()
 last_time = datetime.now()
@@ -16,7 +17,7 @@ def index(request):
     ''' Index view '''
     global last_time
     last_time = datetime.now()
-    return render(request,'index.html')
+    return render(request,'index.html', {'current_user':read_current_user()})
 
 def monitor(request):
     ''' Monitor view '''
@@ -32,4 +33,10 @@ def monitor(request):
             print(err)
             measure_pipe.kill()
     print('Time:',current_time.total_seconds())
-    return render(request,'index.html')
+    return render(request,'index.html', {'current_user':read_current_user()})
+
+def read_current_user():
+    f = open(CURRENT_TOKEN,'r')
+    token = f.read()
+    f.close()
+    return int(token)+2
