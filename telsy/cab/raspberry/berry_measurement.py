@@ -1,21 +1,18 @@
 '''
 Fundacion Cardiovascular de Colombia
 Proyecto Telsy
-Telsy Cab v19.08.2022
+Telsy Cab v23.08.2022
 Ing. Elmer Rocha Jaime
 '''
 
 from datetime import datetime
 from berry_io import serial_read, serial_write
-from locale import setlocale, LC_ALL
-from pytz import timezone
 from requests import post as http_post
 from serial import Serial
 from user_tokens import tokens, server
 from time import sleep
 from json import dumps
 
-LOCAL = setlocale(LC_ALL, 'es_CO.UTF-8')
 TOKEN_PATH = './cab/raspberry/current_token.txt'
 DATE_PATH = './cab/raspberry/current_date.txt'
 MEASUREMENT_TIME = 90 # 90 seconds, 1:30 minutes
@@ -37,7 +34,7 @@ date_file = date_txt.read()
 index_file.close()
 date_txt.close()
 
-current_date = datetime.now(timezone('America/Bogota')).strftime('%d/%m/%Y')
+current_date = datetime.now().strftime('%d/%m/%Y')
 if date_file != current_date:
     date_file = current_date
     date_txt = open(DATE_PATH, 'w')
