@@ -1,7 +1,7 @@
 '''
 Fundacion Cardiovascular de Colombia
 Proyecto Telsy
-Telsy Cab v29.08.2022
+Telsy Cab v30.08.2022
 Ing. Elmer Rocha Jaime
 '''
 
